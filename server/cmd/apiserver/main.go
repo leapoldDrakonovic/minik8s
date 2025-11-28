@@ -38,7 +38,7 @@ func main() {
 	}
 
 	s := grpc.NewServer()
-	pb.RegisterApiServerServer(s, grpcserver.NewApiServer())
+	pb.RegisterApiServerServer(s, grpcserver.NewApiServer(badge))
 
 	go func() {
 
@@ -56,11 +56,11 @@ func main() {
 	s.GracefulStop()
 
 	// close Badger
-	if closer, ok := badge.(*store.BadgerStore); ok {
-		if err := closer.Close(); err != nil {
-			log.Printf("error closing Badger store: %v", err)
-		}
-	}
+	// if closer, ok := badge.(*store.BadgerStore); ok {
+	// 	if err := closer.Close(); err != nil {
+	// 		log.Printf("error closing Badger store: %v", err)
+	// 	}
+	// }
 
 	log.Println("Shutdown complete")
 	log.Println("Server stopped gracefully")
