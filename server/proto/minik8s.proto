@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "minik8s/proto";
+
+message PodSpec {
+  string name = 1;
+  string image = 2;          // на будущее: контейнер, но пока обычный процесс
+  repeated string cmd = 3;   // процесс для запуска на ноде
+}
+
+message Pod {
+  string id = 1;
+  PodSpec spec = 2;
+  string status = 3;         // Pending / Running / Failed / Succeeded
+  string node_name = 4;
+}
+
+message Node {
+  string name = 1;
+  double cpu_load = 2;
+  double mem_load = 3;
+  string status = 4;         // Ready / NotReady
+}
+
+message CreatePodRequest {
+  PodSpec spec = 1;
+}
+
+message CreatePodResponse {
+  Pod pod = 1;
+}
+
+message ListPodsRequest {}
+message ListPodsResponse {
+  repeated Pod pods = 1;
+}
+
+message RegisterNodeRequest {
+  string name = 1;
+}
+
+message RegisterNodeResponse {
+  Node node = 1;
+}
+
+message HeartbeatRequest {
+  string name = 1;
+  double cpu = 2;
+  double memory = 3;
+}
+
+message HeartbeatResponse {}
+
+service ApiServer {
+  rpc CreatePod(CreatePodRequest) returns (CreatePodResponse);
+  rpc ListPods(ListPodsRequest) returns (ListPodsResponse);
+  rpc RegisterNode(RegisterNodeRequest) returns (RegisterNodeResponse);
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+}
