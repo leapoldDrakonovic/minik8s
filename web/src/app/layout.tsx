@@ -1,6 +1,5 @@
 import { Outlet } from "react-router"
 import { Sidebar } from "../components/sidebar"
-import { Header } from "../components/header"
 
 
 /**
@@ -13,7 +12,7 @@ export const Layout: React.FC = () => {
             {/* Main content and sidebar are arranged horizontally */}
             <div className="flex flex-row">
                 {/* Content area, takes up 80% width and has a border */}
-                <div className="w-full">
+                <div className="w-full overflow-y-scroll">
                     <Outlet/>
                 </div>
                 {/* Sidebar on the right */}

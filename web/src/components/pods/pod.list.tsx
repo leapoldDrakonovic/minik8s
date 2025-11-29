@@ -10,7 +10,7 @@ type TPodListComponent = React.FC<IPodListProps>
 export const PodList: TPodListComponent = ({data}) => {
 
     return (
-        <ul>
+        <ul className="flex flex-col">
             {data.map(el => (
                 <PodElement data={el}/>
             ))}

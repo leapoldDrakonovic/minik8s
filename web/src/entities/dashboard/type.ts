@@ -1,3 +1,4 @@
+import type { IMetricData } from "@/components/metric-card";
 
 
 export interface IDashboardData {}
@@ -11,6 +12,73 @@ export interface IPodData {
     cpu: any;
     memory: any;
 }
+
+
+
+export interface INodeData {
+  title: string;
+  namespace?: string;
+  version?: string;
+  age: number;
+  os?: string
+  metric: IMetricData
+}
+
+export const mockNodes: INodeData[] = [
+  {
+    title: "NODE-1",
+    namespace: "default",
+    version: "v1.27.3",
+    age: 15,
+    os: "linux",
+    metric: {
+      icon: undefined,
+      title: "CPU",
+      progress: {
+        h: 100,
+        l: 0,
+        cur: 13,
+        title: "cores"
+      }
+    }
+  },
+  {
+    title: "NODE-2",
+    namespace: "kube-system",
+    version: "v1.27.3",
+    age: 32,
+    os: "linux",
+    metric: {
+      icon: undefined,
+      title: "CPU",
+      progress: {
+        h: 100,
+        l: 0,
+        cur: 27,
+        title: "Gi"
+      }
+    }
+  },
+  {
+    title: "NODE-3",
+    namespace: "production",
+    version: "v1.28.1",
+    age: 27,
+    os: "linux",
+    metric: {
+      icon: undefined,
+      title: "Pods",
+      progress: {
+        h: 100,
+        l: 0,
+        cur: 48,
+        title: ""
+      }
+    }
+  }
+];
+
+
 
 
 // Delete mock data
@@ -32,6 +100,33 @@ export const mockPods: IPodData[] = [
     age: "2m",
     cpu: 0.09,
     memory: 12
+  },
+  {
+    name: "app-789",
+    node: "node-3",
+    status: "Running",
+    restarts: 2,
+    age: "15m",
+    cpu: 0.2,
+    memory: 40
+  },
+  {
+    name: "app-789",
+    node: "node-3",
+    status: "Running",
+    restarts: 2,
+    age: "15m",
+    cpu: 0.2,
+    memory: 40
+  },
+  {
+    name: "app-789",
+    node: "node-3",
+    status: "Running",
+    restarts: 2,
+    age: "15m",
+    cpu: 0.2,
+    memory: 40
   },
   {
     name: "app-789",
