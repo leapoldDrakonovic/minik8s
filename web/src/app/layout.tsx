@@ -3,20 +3,22 @@ import { Sidebar } from "../components/sidebar"
 import { Header } from "../components/header"
 
 
+/**
+ * Layout component sets up the main structure of the application with a header,
+ * content area (rendered by react-router's Outlet), and a sidebar on the right.
+ */
 export const Layout: React.FC = () => {
-
-
     return (
         <main>
-
-            <Header/>
-            <div className="flex flex-row gap-4">
-                <div className="w-[80%] border-2 ">
+            {/* Main content and sidebar are arranged horizontally */}
+            <div className="flex flex-row">
+                {/* Content area, takes up 80% width and has a border */}
+                <div className="w-full">
                     <Outlet/>
                 </div>
+                {/* Sidebar on the right */}
                 <Sidebar/>
             </div>
-
         </main>
     )
 }
