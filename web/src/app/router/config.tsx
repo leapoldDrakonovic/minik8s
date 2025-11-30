@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router";
-import { MainPage } from "../../page/main";
-import { Layout } from "../layout";
+import { AuthLayout, Layout } from "../layout";
+import { AuthPage, LoginPage, MainPage, RegistrationPage } from "@/page";
+import { APP_ROUTES } from "@/shared/config";
 
 
 export const ROUTES: RouteObject[] = [
@@ -11,6 +12,24 @@ export const ROUTES: RouteObject[] = [
             {
                 path: "*",
                 element: <MainPage/>
+            }
+        ]
+    },
+    {
+        path: APP_ROUTES.AUTH.ROOT,
+        element: <AuthLayout/>,
+        children: [
+            {
+                path: "",
+                element: <AuthPage/>
+            },
+            {
+                path: APP_ROUTES.AUTH.LOGIN,
+                element: <LoginPage/>
+            },
+            {
+                path: APP_ROUTES.AUTH.REGISTRATION,
+                element: <RegistrationPage/>
             }
         ]
     }
