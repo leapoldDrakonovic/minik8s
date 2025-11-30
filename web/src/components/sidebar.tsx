@@ -1,6 +1,7 @@
 import { Box, LayoutDashboard, PackageOpen, ServerIcon, Settings, User } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "./ui/button";
+import { Logo } from "./logo";
 
 interface INavigationLink {
     path: string;
@@ -49,20 +50,6 @@ const NavigationLink: TNavigationLinkComponent = ({data}) => {
         </li>
     )
 }
-
-
-const Logo: React.FC = () => {
-
-    return (
-        <div className="flex justify-center items-center gap-6">
-            <div className="bg-blue-400 rounded-lg w-10 h-10 flex justify-center items-center">
-                <ServerIcon color="white"/>
-            </div>
-            <span className="font-bold text-xl">mini K8S</span>
-        </div>
-    )
-}
-
 
 export const Sidebar: React.FC = () => {
 
