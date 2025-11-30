@@ -1,0 +1,5 @@
+- добавить persist: сохранять состояние подов в JSON в ./pods/state.json и загружать при старте;
+- добавить автоматический рестарт (restartPolicy) в PodManager;
+- добавить limits (через cgroups)
+- подключить gRPC (FetchContent) и оборачивать текущие методы в RunPod RPC;
+- отправлять status callback в ApiServer (через gRPC) при завершении пода.
